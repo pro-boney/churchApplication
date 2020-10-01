@@ -34,15 +34,32 @@
                     </center>
                 </div>
          <div class="cart" style="width:30%; padding:40px; margin-bottom:10px; border:1px solid gray; margin:20px auto; border-radius:50px 50px 0px 0px; background-color:gray;">
-            <form>
+           
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
                 <div>
                     <label>User Name</label>
-                    <input type="email" name="" class="form-control">
+                    <!-- <input type="email" name="" class="form-control"> -->
+                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+                    @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                     @enderror
                 </div>
 
                  <div>
                     <label>Password</label>
-                    <input type="password" class="form-control" name="">
+                    <!-- <input type="password" class="form-control" name=""> -->
+                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
+                    @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+
                 </div>
 
                 <div class="form-group row">
@@ -76,7 +93,7 @@
         </div>
         <center>
            <h1 style="color:white;">
-                WELCOME TO FIRE 4 FIRE INTERNATIONAL MINISTRY PLATFORM ...
+               <marquee> WELCOME TO FIRE 4 FIRE INTERNATIONAL MINISTRY PLATFORM ...</marquee>
            </h1> 
         </center>
     </div>

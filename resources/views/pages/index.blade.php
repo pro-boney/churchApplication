@@ -2,6 +2,10 @@
 <html>
 <head>
 	<title>Church App</title>
+
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
 	<script type="text/javascript" src="{{asset('/js/newJquery.js')}}"></script>
 	<script type="text/javascript" src="{{asset('/js/bootstrap.min.js')}}"></script>
 	<link rel="stylesheet" type="text/css" href="{{asset('/css/bootstrap.min.css')}}">
@@ -21,7 +25,7 @@
 			//background-attachment:fixed;
 			background-position:100% 40%;
 			height:550px;
-			margin:0px;
+			margin-top:60px;
 			padding:0px;
 		}
 		.showChild{
@@ -86,19 +90,87 @@
 	</style>
 </head>
 <body>
-	<div style="width:100%; height:60px; background-color:black; position:;"></div>
+	<div style="width:100%; height:60px; background-color:black;" class="fixed-top">
+		<nav class="navbar navbar-expand-md navbar-dark  shadow-sm">
+            <div class="container">
+                 <a class="navbar-brand disabled" role="button" aria-disabled="true" href="#" >
+                    <!-- {{ config('app.name', 'Laravel') }} -->
+                    Fir4Fire International Ministry
+                </a> 
+                <button class="navbar-toggler btn btn-primary" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon" style="background-color:;"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent" style="background-color:black;">
+                    <!-- Left Side Of Navbar -->
+                    <ul class="navbar-nav ml-5">
+                    	<li class="nav-item">
+                    		<a href="{{ url('/') }}" class="nav-link">Home</a>
+                    	</li>
+                    	<li class="nav-item">
+                    		<a href="" class="nav-link">About Us</a>
+                    	</li>
+                    	<li class="nav-item">
+                    		<a href="" class="nav-link">Contact Us</a>
+                    	</li>
+                    	<li class="nav-item">
+                    		<a href="" class="nav-link">Gallery</a>
+                    	</li>
+                    	<li class="nav-item">
+                    		<a href="" class="nav-link btn btn-outline-danger btn-sm ml-md-5" style="color:gold;"><i>Donation</i></a>
+                    	</li>
+                    </ul>
+
+                    <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav ml-auto">
+                        <!-- Authentication Links -->
+                        @guest
+                            <li class="nav-item">
+                                <a class="nav-link btn btn-primary" href="{{ route('login') }}">{{ __('Portal') }}</a>
+                            </li>
+                            @if (Route::has('register'))
+                                <!-- <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li> -->
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                		 <a class="dropdown-item" href="{{ route('home') }}">
+                                        {{ __('Portal') }}
+                                    </a>
+
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                    </ul>
+                </div>
+            </div>
+        </nav>
+	</div>
 	<div class="container-fluid" id="shows">
 		<div class="row showChild">
 				<div class="col-sm-6">
 							<img src="{{asset('/image/fire.png')}}" id="logo">
 						
 							<h1>
-								fire 4 fire international ministry
+								FIRE 4 FIRE <br> WE ARE THE OVERCOMER <br> WE ARE MOVING HIGHER
 							</h1>
 				</div>
-				<div class="col-sm-6 portal">
-					<a href="{{route('login')}}" class="btn btn-primary btn-lg float-right">Portal</a>
-				</div>
+				
 		</div>
 	</div>
 
@@ -330,7 +402,10 @@
 
 								<div style="background-color:white; width:96%; margin:1px auto; ">
 								<div class="row"  style="background-color:white; margin:30px 1px 5px 1px;">
-									<div class="col-sm-3" style="padding:10px;"><i class="fa fa-3x fa-map-marker" style="color:darkred; border-radius:50%;"></i></div>
+									<div class="col-sm-3" style="padding:10px;">
+										<i class="fa fa-3x fa-map-marker" style="color:darkred; border-radius:50%;">
+										</i>
+									</div>
 									<div class="col-sm-9">The quick brown fo jumb over the lazy dog</div><br><br><br>
 								</div>
 								<div class="row"  style="background-color:white; margin:20px 1px 5px 1px;">
